@@ -5,12 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.Stateless;
+import javax.enterprise.inject.Default;
+
 import at.rsg.jeekurs.domain.Employee;
 
+@Stateless
 public class EmployeeServiceLocal implements EmployeeService {
 	private static int nextId = 0;
 	
 	private Map<Integer, Employee> employeeMap = new HashMap<>();
+	
+	public EmployeeServiceLocal() {
+		System.out.println("EmployeeServiceLocal constructor");
+	}
 	
 	@Override
 	public List<Employee> getAll() throws ServiceException {

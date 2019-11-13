@@ -9,6 +9,8 @@ import at.rsg.jeekurs.service.ServiceException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -33,8 +35,9 @@ import javax.ws.rs.core.Response.Status;
 @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
 public class EmployeeResource {
 	
-	private EmployeeService empService = 
-			EmployeeServiceLocalFactory.getInstance();
+	//@Inject
+	@EJB(beanName = "EmployeeServiceLocal")
+	private EmployeeService empService;
 	
 	@GET
 	public Response getAll() {
