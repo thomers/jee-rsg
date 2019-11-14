@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
 
@@ -12,12 +13,21 @@ import at.rsg.jeekurs.domain.Employee;
 
 @Stateless
 public class EmployeeServiceLocal implements EmployeeService {
+	
+	@Inject
+	private DataService dataService;
+	
 	private static int nextId = 0;
 	
 	private Map<Integer, Employee> employeeMap = new HashMap<>();
 	
 	public EmployeeServiceLocal() {
 		System.out.println("EmployeeServiceLocal constructor");
+	}
+	
+	@PostConstruct
+	public void postConstruct() {
+		System.out.println("EmployeeServiceLocal postConstruct");
 	}
 	
 	@Override

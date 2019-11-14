@@ -1,6 +1,6 @@
 package at.rsg.jeekurs.domain;
 
-import javax.jms.JMSSessionMode;
+import javax.json.bind.annotation.JsonbTransient
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
